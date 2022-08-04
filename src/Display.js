@@ -1,4 +1,7 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 class Display extends React.Component {  
@@ -6,10 +9,20 @@ class Display extends React.Component {
         console.log("Display: ", this.props.map);
     return (
       <>
-        <h3>{this.props.locationObj.display_name}</h3>
-        <h2>Latitude: {this.props.locationObj.lat}</h2>
-        <h2>Longitude: {this.props.locationObj.lon}</h2>
-        <img src={this.props.map} alt="map"/>
+        <Row>
+            <Col>
+                <Card className="m-3 h-auto p-5" id="locdisplay">
+                    <Card.Title className="m-4">{this.props.locationObj.display_name}</Card.Title>
+                    <Card.Text>Latitude: {this.props.locationObj.lat}</Card.Text>
+                    <Card.Text>Longitude: {this.props.locationObj.lon}</Card.Text>
+                </Card>
+            </Col>
+            <Col>
+                <Card className="m-3">
+                    <Card.Img src={this.props.map} alt="map"/>
+                </Card>
+            </Col>
+        </Row>
       </>
     )
   }

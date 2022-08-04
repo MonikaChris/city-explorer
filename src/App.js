@@ -44,11 +44,11 @@ class App extends React.Component {
             <Form>
               <Row>
                 <Col xs={6} sm={7} md={8} lg={10}>
-                      <Form.Control
+                    <Form.Control
                       type="text"
                       placeholder="Enter a City"
                       onChange={(event) => this.setState({ searchedCity: event.target.value })} 
-                      />
+                    />
                 </Col>
                 <Col xs={1} s={1} md={1} lg={1}>
                   <Button 
