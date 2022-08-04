@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Monika Davies
-**Version**: 1.0.0
+**Version**: 1.0.1
 
 ## Overview
 
@@ -15,7 +15,7 @@ City Explorer allows users to look up US cities to see a map, local weather, loc
 
 This is a React app that uses Bootstrap. API calls are made with Axios. It uses
 the following WRRC:
-![WRRC flowchart](./images/wrrc.jpg)
+![WRRC flowchart](src/images/wrrc.jpg)
 
 ## Change Log
 
