@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Header from './Header.js';
 import Display from './Display.js'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -23,6 +25,7 @@ class App extends React.Component {
     const response= await axios.get(url);
     this.setState( {locationObj: response.data[0]});
     this.map(response.data[0].lat, response.data[0].lon);
+    console.log(response);
   }
 
   map = async (lat, lon) => {
@@ -33,34 +36,41 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.searchedCity);
     return (
-      <Container className="App">
-        <Header />
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Enter a City</Form.Label>
-              <Form.Control 
-              type="text"
-              onChange={(event) => this.setState({ searchedCity: event.target.value})} 
-              />
-              <Button 
-              onClick={this.getLocation}
-              as="input" 
-              type="submit"
-              variant="info"
-              value="Explore!" 
-              />
-            </Form.Group>
-          </Form>
-          {this.state.locationObj.place_id &&
-          <>
-            <Display 
-            locationObj={this.state.locationObj}
-            map={this.state.map}
-            />
-          </>
-          }
-      </Container>
+      <>
+        <Header/>
+          <Container className="App"> 
+            <Form>
+              <Row>
+                <Col xs={6} sm={7} md={8} lg={10}>
+                      <Form.Control
+                      type="text"
+                      placeholder="Enter a City"
+                      onChange={(event) => this.setState({ searchedCity: event.target.value })} 
+                      />
+                </Col>
+                <Col xs={1} s={1} md={1} lg={1}>
+                  <Button 
+                    onClick={this.getLocation}
+                    as="input" 
+                    type="submit"
+                    variant="info"
+                    value="Explore!" 
+                  />
+                </Col>
+              </Row>
+            </Form>
+              {this.state.locationObj.place_id &&
+              <>
+                <Display 
+                locationObj={this.state.locationObj}
+                map={this.state.map}
+                />
+              </>
+              }
+          </Container>
+        </>
     )
   }
 }
