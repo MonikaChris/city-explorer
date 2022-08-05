@@ -16,3 +16,8 @@
   border: solid .1rem rgb(0, 5, 65);
   background-color: rgb(179, 215, 255);
 }
+
+#error {
+  border: solid .1rem rgb(133, 3, 3);
+  background-color: rgb(232, 134, 134);
+}

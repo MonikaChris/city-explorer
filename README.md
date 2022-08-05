@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Monika Davies
-**Version**: 1.0.1
+**Version**: 1.0.2
 
 ## Overview
 
@@ -19,6 +19,11 @@ the following WRRC:
 
 ## Change Log
 
+- Enabled API calls to LocationIQ to get latitude, longitude, and map
+
+- Update map and data display
+
+- Handle error from bad search and display error status code
 
 ## Credit and Collaborations
 
