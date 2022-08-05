@@ -29,23 +29,18 @@ class App extends React.Component {
       const response = await axios.get(url);
       this.setState({ locationObj: response.data[0], error: false, errorMessage: "" });
       this.map(response.data[0].lat, response.data[0].lon);
-      console.log("Response: ", response);
     } catch (err) {
-      console.log("Error Object: ", err);
-      console.log("Error Message Grab: ", err.message);
       this.setState( {locationObj: {}, error: true, errorMessage: err.message})
     }
   }
 
   map = async (lat, lon) => {
-    console.log("Lat: ", this.state.locationObj);
     const url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${lat},${lon}&zoom=12`;
     const response = await axios.get(url);
     this.setState({ map: response.config.url });
   }
 
   render() {
-    console.log(this.state.searchedCity);
     return (
       <>
         <Header />

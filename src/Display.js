@@ -6,7 +6,6 @@ import Col from 'react-bootstrap/Col';
 
 class Display extends React.Component {  
     render() {
-        console.log("Display: ", this.props.map);
     return (
       <>
         <Row>
