@@ -7,6 +7,7 @@ import Header from './Header.js';
 import Display from './Display.js'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Weather from './Weather.js';
 import Error from './Error.js';
 import axios from 'axios';
 
@@ -18,7 +19,8 @@ class App extends React.Component {
       locationObj: {},
       map: "",
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      weather: []
     };
   }
 
@@ -32,6 +34,16 @@ class App extends React.Component {
     } catch (err) {
       this.setState( {locationObj: {}, error: true, errorMessage: err.message})
     }
+
+    try {
+      const url = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchedCity}`;
+      const response = await axios.get(url);
+      this.setState({ weather: response.data});
+      console.log('Weather Response: ', response.data);
+    }
+    catch (err) {
+      this.setState( { weather: [], error: true, errorMessage: err.message});
+    }
   }
 
   map = async (lat, lon) => {
@@ -40,7 +52,7 @@ class App extends React.Component {
     this.setState({ map: response.config.url });
   }
 
-  render() {
+  render() {    
     return (
       <>
         <Header />
@@ -73,6 +85,12 @@ class App extends React.Component {
               />
             </>
           }
+          {this.state.weather.length > 0 && 
+          <>
+          <Weather weatherReport={this.state.weather} />
+          </>
+          }
+
           {this.state.error &&
             <Error message={this.state.errorMessage} />
           }
