@@ -29,7 +29,7 @@ class SearchBar extends React.Component {
           this.setState({ currentLocationObj: response.data[0], currentLocationError: "" });
           this.getMap(response.data[0].lat, response.data[0].lon);
         } catch (err) {
-          this.setState( {currentLocationObj: {}, currentLocationErrorMessage: err.message})
+          this.setState( {currentLocationObj: {}, currentLocationErrorMessage: err.message, currentMap: '' })
         }
     
         try {
