@@ -8,10 +8,8 @@ class Error extends React.Component {
     return (
       <Container>
         <Card id="error" className="m-5 p-3">
-            <Card.Text>Error: {this.props.message}</Card.Text>
+            <Card.Text>Error: {this.props.error}</Card.Text>
         </Card>
-
-
       </Container>
     )
   }

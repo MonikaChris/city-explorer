@@ -1,28 +1,32 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import './App.css';
+import Container from 'react-bootstrap/Container';
+import Location from './Location.js';
+import Weather from './Weather.js';
+import Map from './Map.js';
 
 
 class Display extends React.Component {  
     render() {
     return (
-      <>
-        <Row>
-            <Col>
-                <Card className="m-3 h-auto p-5" id="locdisplay">
-                    <Card.Title className="m-4">{this.props.locationObj.display_name}</Card.Title>
-                    <Card.Text>Latitude: {this.props.locationObj.lat}</Card.Text>
-                    <Card.Text>Longitude: {this.props.locationObj.lon}</Card.Text>
-                </Card>
-            </Col>
-            <Col>
-                <Card className="m-3">
-                    <Card.Img src={this.props.map} alt="map"/>
-                </Card>
-            </Col>
-        </Row>
-      </>
+       <Container id="display"> 
+            <Container id="locationDisplay">
+                    <Location 
+                    locationObj={this.props.locationObj}
+                    error={this.props.locationError}
+                    />
+                    <Weather 
+                    weather={this.props.weather}
+                    error={this.props.weatherError}
+                    />
+            </Container>
+            <Container id="mapDisplay">
+                <Map 
+                map={this.props.map}
+                error={this.props.locationError}
+                />      
+            </Container>
+        </Container>
     )
   }
 }
