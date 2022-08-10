@@ -16,8 +16,10 @@ class SearchBar extends React.Component {
             currentLocationObj: {},
             currentMap: '',
             currentWeather: [],
+            currentMovies: [],
             currentLocationError: '',
-            currentWeatherError: ''
+            currentWeatherError: '',
+            currentMoviesError: ''
         }
     }
 
@@ -36,18 +38,30 @@ class SearchBar extends React.Component {
           const url = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchedCity}`;
           const response = await axios.get(url);
           this.setState({ currentWeather: response.data, currentWeatherError: ''});
-          console.log('Weather Response: ', response.data);
         }
         catch (err) {
-            console.log(err);
-          this.setState( { currentWeather: [], currentWeatherError: err.message});
+          this.setState( { currentWeather: [], currentWeatherError: err.message });
         }
+
+        this.getMovies(this.state.searchedCity);
       }
     
       getMap = async (lat, lon) => {
         const url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${lat},${lon}&zoom=12`;
         const response = await axios.get(url);
         this.setState({ currentMap: response.config.url });
+      }
+
+      getMovies = async (city) => {
+        try {
+            const url = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${city}`;
+            const response = await axios.get(url);
+            console.log(response.data);
+            this.setState( {currentMovies: response.data, currentMovieError: '' });
+        } catch (err) {
+            this.setState( { currentMovies: [], currentMovieError: err.message });
+        }
+
       }
 
     render() {
@@ -81,6 +95,8 @@ class SearchBar extends React.Component {
                 locationError={this.state.currentLocationError}
                 weatherError={this.state.currentWeatherError}
                 map={this.state.currentMap}
+                movies={this.state.currentMovies}
+                moviesError={this.state.currentMoviesError}
                 />
             </Container>
         )
