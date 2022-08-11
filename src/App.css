@@ -46,6 +46,14 @@
   
 }
 
+#moviePoster {
+  height: 30rem;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+
 
 #footer {
   height: 1.5rem;

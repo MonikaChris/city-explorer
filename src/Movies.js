@@ -21,7 +21,7 @@ class Movies extends React.Component {
                             <Card.Text>Plot: {movie.overview}</Card.Text>
                             <Card.Text>Release Date: {movie.released_on}</Card.Text>
                             <Card.Text>Popularity: {movie.popularity} Average Votes: {movie.average_votes} Total Votes: {movie.total_votes}</Card.Text>
-                            <Card.Img src={movie.image_url} alt="Movie Poster" />
+                            <Card.Img id="moviePoster" src={movie.image_url} alt="Movie Poster" />
                         </Card>
                     </Accordion.Body>
                 </Accordion.Item>

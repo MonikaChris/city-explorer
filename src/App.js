@@ -8,6 +8,10 @@ import Footer from './Footer';
 
 class App extends React.Component {
 
+  componentDidMount() {
+    document.body.style.backgroundColor = 'rgb(205, 221, 248)';
+}
+
   render() {    
     return (
       <div className="App">
