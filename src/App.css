@@ -42,6 +42,15 @@
   height: min-content;
   border: solid .1rem rgb(0, 5, 65);
   background-color: rgb(246, 220, 224);
+  font-size: .7rem;
+  
+}
+
+#moviePoster {
+  height: 30rem;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
   
 }
 
