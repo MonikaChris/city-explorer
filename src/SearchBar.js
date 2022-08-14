@@ -28,38 +28,42 @@ class SearchBar extends React.Component {
         try {
           const url = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATION_KEY}&q=${this.state.searchedCity}&format=json`;
           const response = await axios.get(url);
-          this.setState({ currentLocationObj: response.data[0], currentLocationError: "" });
+          this.setState({ currentLocationObj: response.data[0], currentLocationError: "" }, () => this.getWeather());
           this.getMap(response.data[0].lat, response.data[0].lon);
         } catch (err) {
           this.setState( {currentLocationObj: {}, currentLocationErrorMessage: err.message, currentMap: '' })
-        }
-    
-        try {
-          const url = `${process.env.REACT_APP_SERVER}/weather?searchQuery=${this.state.searchedCity}`;
-          const response = await axios.get(url);
-          this.setState({ currentWeather: response.data, currentWeatherError: ''});
-        }
-        catch (err) {
-          this.setState( { currentWeather: [], currentWeatherError: err.message });
         }
 
         this.getMovies(this.state.searchedCity);
       }
     
       getMap = async (lat, lon) => {
+        console.log('Map got called');
         const url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${lat},${lon}&zoom=12`;
         const response = await axios.get(url);
         this.setState({ currentMap: response.config.url });
+      }
+
+      getWeather = async () => {
+        try {
+            const url = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.currentLocationObj.lat}&lon=${this.state.currentLocationObj.lon}`;
+            console.log('URL: ', url);
+            const response = await axios.get(url);
+            this.setState({ currentWeather: response.data, currentWeatherError: ''});
+          }
+          catch (err) {
+            console.log(err);
+            this.setState( { currentWeather: [], currentWeatherError: err.message });
+          }
       }
 
       getMovies = async (city) => {
         try {
             const url = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${city}`;
             const response = await axios.get(url);
-            console.log(response.data);
-            this.setState( {currentMovies: response.data, currentMovieError: '' });
+            this.setState( {currentMovies: response.data, currentMoviesError: '' });
         } catch (err) {
-            this.setState( { currentMovies: [], currentMovieError: err.message });
+            this.setState( { currentMovies: [], currentMoviesError: err.message });
         }
 
       }
