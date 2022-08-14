@@ -8,7 +8,6 @@ import Accordion from 'react-bootstrap/Accordion';
 
 class Movies extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <Container id="Movies">
         <Accordion defaultActiveKey="0">
@@ -40,7 +39,10 @@ class Movie extends React.Component {
                         <Card.Text>Plot: {this.props.movie.overview}</Card.Text>
                         <Card.Text>Release Date: {this.props.movie.released_on}</Card.Text>
                         <Card.Text>Popularity: {this.props.movie.popularity} Average Votes: {this.props.movie.average_votes} Total Votes: {this.props.movie.total_votes}</Card.Text>
-                        <Card.Img id="moviePoster" src={this.props.movie.image_url} alt="Movie Poster" />
+                        <Card.Img 
+                        id="moviePoster" 
+                        src={this.props.movie.image_url || "src/images/undefinedImage.jpg"} 
+                        alt="Movie Poster" />
                     </Card>
                 </Accordion.Body>
             </Accordion.Item>

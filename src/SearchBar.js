@@ -38,6 +38,7 @@ class SearchBar extends React.Component {
       }
     
       getMap = async (lat, lon) => {
+        console.log('Map got called');
         const url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${lat},${lon}&zoom=12`;
         const response = await axios.get(url);
         this.setState({ currentMap: response.config.url });
