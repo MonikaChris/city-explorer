@@ -33,6 +33,7 @@ class Display extends React.Component {
             <Container>
                 <Movies 
                 movies={this.props.movies}
+                moviesTime={this.props.moviesTime}
                 moviesError={this.props.moviesError}
                 />
             </Container>

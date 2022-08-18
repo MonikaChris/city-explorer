@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
             currentLocationObj: {},
             currentMap: '',
             currentWeather: [],
-            currentMovies: [],
+            currentMovies: {},
             currentLocationError: '',
             currentWeatherError: '',
             currentMoviesError: ''
@@ -47,12 +47,10 @@ class SearchBar extends React.Component {
       getWeather = async () => {
         try {
             const url = `${process.env.REACT_APP_SERVER}/weather?lat=${this.state.currentLocationObj.lat}&lon=${this.state.currentLocationObj.lon}`;
-            console.log('URL: ', url);
             const response = await axios.get(url);
             this.setState({ currentWeather: response.data, currentWeatherError: ''});
           }
           catch (err) {
-            console.log(err);
             this.setState( { currentWeather: [], currentWeatherError: err.message });
           }
       }
@@ -61,11 +59,11 @@ class SearchBar extends React.Component {
         try {
             const url = `${process.env.REACT_APP_SERVER}/movies?searchQuery=${city}`;
             const response = await axios.get(url);
+            console.log('Response: ', response.data);
             this.setState( {currentMovies: response.data, currentMoviesError: '' });
         } catch (err) {
-            this.setState( { currentMovies: [], currentMoviesError: err.message });
+            this.setState( { currentMovies: {}, currentMoviesError: err.message });
         }
-
       }
 
     render() {

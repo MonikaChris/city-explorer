@@ -8,17 +8,22 @@ import Accordion from 'react-bootstrap/Accordion';
 
 class Movies extends React.Component {
   render() {
+    console.log('Props: ', this.props);
     return (
       <Container id="Movies">
         <Accordion defaultActiveKey="0">
-            {this.props.movies.length > 0 &&
-            this.props.movies.map((movie, idx) => (
+            {this.props.movies.data &&
+            this.props.movies.data.map((movie, idx) => (
                <Movie
                idx={idx}
                movie={movie} 
                />
             ))}
         </Accordion>
+        {this.props.movies.data &&
+        <p>Timestamp for movie list update: {this.props.movies.timestamp}</p>
+        }
+        
 
         {this.props.moviesError &&
         <Error
