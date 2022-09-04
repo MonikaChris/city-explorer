@@ -5,6 +5,8 @@ import Location from './Location.js';
 import Weather from './Weather.js';
 import Map from './Map.js';
 import Movies from './Movies.js';
+import Yelp from './Yelp.js';
+
 
 
 class Display extends React.Component {  
@@ -30,10 +32,19 @@ class Display extends React.Component {
                 </Container>
             </Container>
 
-            <Container>
+            <Container id="yelpDisplay">
+                <Yelp
+                yelp={this.props.yelp}
+                yelpError={this.props.yelpError}
+                searchedCity={this.props.searchedCity}
+                />
+            </Container>
+
+            <Container id="moviesDisplay">
                 <Movies 
                 movies={this.props.movies}
                 moviesError={this.props.moviesError}
+                searchedCity={this.props.searchedCity}
                 />
             </Container>
         </>

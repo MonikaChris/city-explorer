@@ -19,7 +19,9 @@ class SearchBar extends React.Component {
             currentMovies: {},
             currentLocationError: '',
             currentWeatherError: '',
-            currentMoviesError: ''
+            currentMoviesError: '',
+            currentYelp: [],
+            currentYelpError: ''
         }
     }
 
@@ -30,12 +32,14 @@ class SearchBar extends React.Component {
           const response = await axios.get(url);
           this.setState({ currentLocationObj: response.data[0], currentLocationError: "" }, () => this.getWeather());
           this.getMap(response.data[0].lat, response.data[0].lon);
+          this.getYelp(response.data[0].lat, response.data[0].lon);
         } catch (err) {
           this.setState( {currentLocationObj: {}, currentLocationErrorMessage: err.message, currentMap: '' })
         }
 
         this.getMovies(this.state.searchedCity);
-      }
+        
+    }
     
       getMap = async (lat, lon) => {
         const url = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_KEY}&center=${lat},${lon}&zoom=12`;
@@ -66,6 +70,18 @@ class SearchBar extends React.Component {
         } catch (err) {
             this.setState( { currentMovies: {}, currentMoviesError: err.message });
         }
+      }
+
+      getYelp = async (lat, lon) => {
+        try {
+          const url = `${process.env.REACT_APP_SERVER}/yelp?lat=${lat}&lon=${lon}`;
+          const response = await axios.get(url);
+          console.log(response.data);
+          this.setState({currentYelp: response.data});
+        } catch (err) {
+          this.setState( {currentYelp: [], currentYelpError: err.message});
+        }
+
       }
 
     render() {
@@ -101,6 +117,9 @@ class SearchBar extends React.Component {
                 map={this.state.currentMap}
                 movies={this.state.currentMovies}
                 moviesError={this.state.currentMoviesError}
+                yelp={this.state.currentYelp}
+                yelpError={this.state.currentYelpError}
+                searchedCity={this.state.searchedCity}
                 />
             </Container>
         )

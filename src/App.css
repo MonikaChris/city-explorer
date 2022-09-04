@@ -54,6 +54,16 @@
   
 }
 
+.section-heading {
+  border: solid .1rem pink;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: rgb(75, 179, 243);
+  color:rgb(27, 27, 64);
+}
+
 
 #footer {
   height: 1.5rem;
