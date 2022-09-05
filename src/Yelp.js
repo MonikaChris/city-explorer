@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container';
 
 class Yelp extends React.Component {
   render() {
-    console.log('Yelp props: ', this.props);
     return (
       <>
         

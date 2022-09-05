@@ -58,7 +58,6 @@ class SearchBar extends React.Component {
         try {
             const url = `${process.env.REACT_APP_SERVER}/yelp?lat=${this.state.locationObj.lat}&lon=${this.state.locationObj.lon}`;
             const response = await axios.get(url);
-            console.log(response.data);
             this.setState({ yelp: response.data }, () => this.getMovies());
         } catch (err) {
             this.setState({ yelp: [], yelpError: err.message });

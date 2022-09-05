@@ -9,7 +9,6 @@ import Accordion from 'react-bootstrap/Accordion';
 class Movies extends React.Component {
   render() {
     const time = new Date(this.props.movies.timestamp);
-    console.log('Timestamp object: ', time);
     return (
       <>
         {this.props.movies.data &&
