@@ -8,6 +8,8 @@ import Accordion from 'react-bootstrap/Accordion';
 
 class Movies extends React.Component {
   render() {
+    const time = new Date(this.props.movies.timestamp);
+    console.log('Timestamp object: ', time);
     return (
       <>
         {this.props.movies.data &&
@@ -26,7 +28,7 @@ class Movies extends React.Component {
           </Container>
         }
         {this.props.movies.data &&
-          <p>Timestamp for movie list update: {this.props.movies.timestamp}</p>
+          <p className="timestamp">Movie list last updated on {time.getMonth()}/{time.getDate()}/{time.getFullYear()}</p>
         }
 
 
