@@ -67,10 +67,13 @@
 
 #footer {
   height: 1.5rem;
-  position: absolute;
+  /*position: absolute;
   bottom: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
   margin: 0;
+  width: 100%;*/
+  margin-top: auto;
   font-size: .5rem;
   font-family:Arial, Helvetica, sans-serif;
 }
@@ -83,4 +86,8 @@
 #error {
   border: solid .1rem rgb(133, 3, 3);
   background-color: rgb(232, 134, 134);
+}
+
+#root {
+  height: 100vh;
 }
