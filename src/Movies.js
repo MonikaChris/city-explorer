@@ -27,7 +27,7 @@ class Movies extends React.Component {
           </Container>
         }
         {this.props.movies.data &&
-          <p className="timestamp">Movie list last updated on {time.getMonth()}/{time.getDate()}/{time.getFullYear()}</p>
+          <p className="timestamp">Movie list last updated on {time.getMonth() + 1}/{time.getDate()}/{time.getFullYear()}</p>
         }
 
 
