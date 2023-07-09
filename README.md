@@ -5,30 +5,26 @@
 
 ## Overview
 
-City Explorer allows users to look up US cities to see a map, local weather, local restaurants, and movies related to that city.
+Note: The backend was redeployed to Render following changes to Heroku's free tier, causing slow initial load times, which typically improve after a few minutes of use. The app will eventually be redeployed to address this issue. Live site link below. Scroll down for images of fully loaded site.
 
-## Getting Started
+Live Site: [mcd-city-explorer.netlify.app/](https://mcd-city-explorer.netlify.app/)
 
+Frontend Repo: [github.com/MonikaChris/city-explorer](https://github.com/MonikaChris/city-explorer)\
+Backend Repo: [github.com/MonikaChris/city-explorer-api](https://github.com/MonikaChris/city-explorer-api)
 
+City Explorer allows users to enter US cities to retrieve a map, five days of local weather, local restaurants, and movie titles related to that city. Restaurants and movies are presented in accordions. The collapsed restaurant accordion displays the name, cuisine type, rating, and price range. Expanding an entry reveals a photo and website link. The collapsed movie accordion shows movie titles, while the expanded entries include a plot description, release date, popularity rating, and movie poster. Movie lists are cached for faster load times, and the date of last refresh is printed below the accordion.
+
+## Live Site Images
+
+![Map/Weather Site Image](src/images/mapWeather.png)
+
+![Restaurant List Site Image](src/images/restaurantsList.png)
+
+![Expanded Restaurant List Site Image](src/images/expandedRestaurants.png)
+
+![Movie List Site Image](src/images/movieList.png)
 
 ## Architecture
 
-This is a React app that uses Bootstrap. API calls are made with Axios. It uses
-the following WRRC:
-![WRRC flowchart](src/images/wrrc.jpg)
-
-Component Organization:
+React Component Organization:
 ![Component Flowchart](src/images/cityexpcomps.jpg)
-
-## Change Log
-
-- Enabled API calls to LocationIQ to get latitude, longitude, and map
-
-- Update map and data display
-
-- Handle error from bad search and display error status code
-
-## Credit and Collaborations
-
-WRRC flowchart created together with Lauren Main
-Error handling assistance from Hexx King and Ray Ruazol
