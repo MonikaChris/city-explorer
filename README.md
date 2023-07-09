@@ -1,6 +1,6 @@
 # City Explorer
 
-**Author**: Monika Davies
+**Author**: Monika Davies\
 **Version**: 1.0.2
 
 ## Overview
